@@ -26,7 +26,7 @@ public class Expedia {
     }
 
     @Test
-    public static void BundleAndSave() throws InterruptedException {
+    public static void BundleAndSaveEmre() throws InterruptedException {
         /*EMRE*/
         /*I want to bundle flight and hotel and get savings*/
 
@@ -74,7 +74,7 @@ public class Expedia {
     }
 
     @Test
-    public static void RoundTrip() throws InterruptedException {
+    public static void RoundTripEmre() throws InterruptedException {
         /*EMRE*/
         /*I want to be able to shedule a roundtrip flight.*/
 
@@ -131,11 +131,19 @@ public class Expedia {
 
         Thread.sleep(3000);
         WebElement selectThisFare = driver.findElement(By.xpath("(//button[@class='btn-secondary btn-action t-select-btn'])[1]"));
-        selectThisFare.click();
+        try {
+            selectThisFare.click();
+        }catch (Exception e){
+
+        }
 
         Thread.sleep(3000);
         WebElement selectSecondFly =driver.findElement(By.xpath("(//button[@class='btn-secondary btn-action t-select-btn'])[1]"));
-        selectSecondFly.click();
+        try {
+            selectSecondFly.click();
+        }catch (Exception e){
+
+        }
 
         Thread.sleep(3000);
         WebElement noThanks = driver.findElement(By.xpath("//a[@id='forcedChoiceNoThanks']"));
@@ -152,10 +160,11 @@ public class Expedia {
         if(noThanks.isDisplayed()) {
             noThanks.click();
         }
+
     }
 
     @Test
-    public static void BestPrices() throws InterruptedException {
+    public static void BestPricesEmre() throws InterruptedException {
         /*EMRE*/
         /*I want to get the best prices first when searching for flights.*/
 
