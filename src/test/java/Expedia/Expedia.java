@@ -1,16 +1,11 @@
-package MondayProject;
+package Expedia;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -127,7 +122,11 @@ public class Expedia {
 
         Thread.sleep(10000);
         WebElement selectFly = driver.findElement(By.xpath("(//button[@class='btn-secondary btn-action t-select-btn'])[1]"));
-        selectFly.click();
+        try {
+            selectFly.click();
+        }catch (Exception e){
+
+        }
 
         Thread.sleep(3000);
         WebElement selectThisFare = driver.findElement(By.xpath("(//button[@class='btn-secondary btn-action t-select-btn'])[1]"));
@@ -146,19 +145,23 @@ public class Expedia {
         }
 
         Thread.sleep(3000);
-        WebElement noThanks = driver.findElement(By.xpath("//a[@id='forcedChoiceNoThanks']"));
+
 
         WebElement selectThisFare2 = driver.findElement(By.xpath("(//button[@class='btn-secondary btn-action t-select-btn'])[1]"));
-        if(!noThanks.isDisplayed()) {
+        try{
             selectThisFare2.click();
-        }
+        }catch (Exception e){
 
+        }
 
         Thread.sleep(7000);
 
+        WebElement noThanks = driver.findElement(By.xpath("//a[@id='forcedChoiceNoThanks']"));
 
-        if(noThanks.isDisplayed()) {
+        try {
             noThanks.click();
+        }catch (Exception e){
+
         }
 
     }
